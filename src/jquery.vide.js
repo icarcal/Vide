@@ -318,9 +318,13 @@
           muted: settings.muted,
           defaultMuted: settings.muted,
           playbackRate: settings.playbackRate,
-          defaultPlaybackRate: settings.playbackRate,
-          playsinline: settings.playsinline
+          defaultPlaybackRate: settings.playbackRate
         });
+
+      // NOT WORKING WITH PROP
+      if (settings.playsinline) {
+        $video.attr('playsinline', '');
+      }
     } catch (e) {
       throw new Error(NOT_IMPLEMENTED_MSG);
     }
