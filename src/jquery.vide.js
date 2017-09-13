@@ -30,7 +30,7 @@
     muted: true,
     loop: true,
     autoplay: true,
-    playlistinline: true,
+    playsinline: true,
     position: '50% 50%',
     posterType: 'detect',
     resizing: true,
@@ -319,7 +319,7 @@
           defaultMuted: settings.muted,
           playbackRate: settings.playbackRate,
           defaultPlaybackRate: settings.playbackRate,
-          playsinline: settings.playlistinline
+          playsinline: settings.playsinline
         });
     } catch (e) {
       throw new Error(NOT_IMPLEMENTED_MSG);
