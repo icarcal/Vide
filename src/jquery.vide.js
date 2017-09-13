@@ -172,6 +172,22 @@
   }
 
   /**
+   * Check if video is playing
+   * @private
+   * @param {Object} $video
+   * @param {Boolean} shouldAutoPlay
+   */
+  function checkIfVideoIsPlaying($video, shouldAutoPlay) {
+    var video = $video.get(0);
+
+    if (shouldAutoPlay) {
+      return !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
+    }
+
+    return false;
+  }
+
+  /**
    * Vide constructor
    * @param {HTMLElement} element
    * @param {Object|String} path
@@ -339,11 +355,11 @@
       '-webkit-transform': 'translate(-' + position.x + ', -' + position.y + ')',
       '-ms-transform': 'translate(-' + position.x + ', -' + position.y + ')',
       '-moz-transform': 'translate(-' + position.x + ', -' + position.y + ')',
-      transform: 'translate(-' + position.x + ', -' + position.y + ')',
+      transform: 'translate(-' + position.x + ', -' + position.y + ')'
 
       // Disable visibility, while loading
-      visibility: 'hidden',
-      opacity: 0
+      // visibility: 'hidden',
+      // opacity: 0
     })
 
     // Resize a video, when it's loaded
@@ -370,6 +386,16 @@
 
     // Append a video
     $wrapper.append($video);
+
+    setTimeout(function() {
+      if (!checkIfVideoIsPlaying($video, settings.autoplay)) {
+        $video.css({
+          visibility: 'hidden',
+          opacity: 0
+        });
+      }
+    }, 100);
+
   };
 
   /**
