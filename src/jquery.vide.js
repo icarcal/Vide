@@ -340,6 +340,7 @@
       // NOT WORKING WITH PROP
       if (settings.playsinline) {
         $video.attr('playsinline', '');
+        $video.attr('preload', 'none');
       }
     } catch (e) {
       throw new Error(NOT_IMPLEMENTED_MSG);
